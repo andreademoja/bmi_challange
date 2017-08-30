@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<noscript>
+    <meta http-equiv="refresh" content="0; URL=http://example.com/noscript.html"/>
+</noscript>
+  <head>
+    <meta charset="utf-8">
+    <title>BMI Calculator</title>
+    <script src="src/person.js"></script>
+    <script src="src/bmi_calculator.js"></script>
+    <script src='https://code.jquery.com/jquery-2.1.4.js'></script>
+  </head>
+  <body>
+    <h1>BMI Calculator</h1>
+    <h2>Using metric method</h2>
+    <form>
+      <input type="text" id="weight" placeholder="Weight">
+      <input type="text" id="height" placeholder="Height">
+      <input type="button" id="calculate" value="Calculate">
+    </form>
+    <span id="display_value"></span>
+    <span id="display_message"></span>
+    <h2>Using imperial method</h2>
+    <form>
+      <input type="text" id="weight_pounds" placeholder="Weight in pounds">
+      <input type="text" id="height_feets" placeholder="Height in feet">
+      <input type="text" id="height_inches" placeholder="Height in inches">
+      <input type="button" id="calculate_2" value="Calculate">
+    </form>
+    <div>
+      <span id="display_value_2"></span>
+      <span id="display_message_2"></span>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#calculate').click(function () {
+          var w = parseFloat($('#weight').val());
+          var h = parseFloat($('#height').val());
+          var person = new Person({weight: w, height: h});
+          person.calculate_bmi();
+          $('#display_value').html('Your BMI is ' + person.bmi_value);
+          $('#display_message').html(person.bmi_message);
+        });
+        $('#calculate_2').click(function () {
+          var wp = parseFloat($('#weight_pounds').val());
+          var hf = parseFloat($('#height_feets').val());
+          var hi = parseFloat($('#height_inches').val());
+          var person_imperial = new Person({weight_pounds: wp, height_feets: hf, height_inches: hi});
+          person_imperial.calculate_bmi_imperial();
+          $('#display_value_2').html('Your BMI is ' + person_imperial.bmi_value);
+          $('#display_message_2').html(person_imperial.bmi_message);
+        });
+      });
+    </script>
+  </body>
+</html>
