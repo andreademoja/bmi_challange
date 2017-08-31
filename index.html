@@ -86,11 +86,11 @@
           $('#display_message_2').html(person_imperial.bmi_message);
         });
         $('.metric').click(function() {
-          $('.metric-input').toggle();
+          $('.metric-input').slideToggle();
           $('.imperial-input').hide();
         });
         $('.imperial').click(function() {
-          $('.imperial-input').toggle();
+          $('.imperial-input').slideToggle();
           $('.metric-input').hide();
         });
       });
