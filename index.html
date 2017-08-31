@@ -14,75 +14,59 @@
   </head>
   <body>
     <!-- Compiled and minified CSS -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
- <!-- Compiled and minified JavaScript -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
- <body>
-      <div class="container">
-        <!-- Page Content goes here -->
-  
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+     <div class="container">
 
+        <h1>BMI Calculator</h1>
+        <blockquote class="metric">
+            <h2>Using metric method</h2>
+        </blockquote>
 
+        <form class="col s12 metric-input">
+          <div class="input-field col s6">
+              <input type="text" id="weight" class="validate">
+              <label for="weight">Weight in kg</label>
+          </div>
+          <div class="input-field col s6">
+              <input type="text" id="height" class="validate">
+              <label for="height">Height in cm</label>
+          </div>
+          <input <a class="waves-effect waves-light btn" type="button" id="calculate" value="Calculate">
+        </form>
+        <span id="display_value" class="metric-input"></span>
+        <span id="display_message" class="metric-input"></span>
 
-    <h1>BMI Calculator</h1>
-    <blockquote>
-    <h2>Using metric method</h2>
-  </blockquote>
+        <blockquote class="imperial">
+            <h2>Using imperial method</h2>
+        </blockquote>
 
-
-
-
-
-
-    <form class="col s12">
-      <div class="input-field col s6">
-      <input type="text" id="weight" class="validate">
-      <label for="weight">Weight in kg</label>
-    </div>
-    <div class="input-field col s6">
-      <input type="text" id="height" class="validate">
-      <label for="height">Height in cm</label>
-    </div>
-      <input <a class="waves-effect waves-light btn" type="button" id="calculate" value="Calculate">
-    </form>
-    <span id="display_value"></span>
-    <span id="display_message"></span>
-    <blockquote>
-    <h2>Using imperial method</h2>
-  </blockquote>
-
-
-
-
-    <form class="col s12">
-    <div class="row">
-        <div class="input-field col s12">
-      <input type="text" id="weight_pounds" class="validate">
-      <label for="weight_puonds">Weight in pounds</label>
-    </div>
-    <div class="input-field col s12">
-      <input type="text" id="height_feets" class="validate">
-      <label for="height_feets">Height in feets</label>
-    </div>
-    <div class="input-field col s12">
-      <input type="text" id="height_inches" class="validate">
-      <label for="height_inches">Height in inches</label>
-    </div>
-      <input <a class="waves-effect waves-light btn" type="button" id="calculate_2" value="Calculate"></a>
-    </form>
-    <div>
-      <span id="display_value_2"></span>
-      <span id="display_message_2"></span>
-    </div>
+        <form class="col s12 imperial-input">
+            <div class="row">
+                <div class="input-field col s12">
+                <input type="text" id="weight_pounds" class="validate">
+                <label for="weight_puonds">Weight in pounds</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="height_feets" class="validate">
+                <label for="height_feets">Height in feets</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="height_inches" class="validate">
+                <label for="height_inches">Height in inches</label>
+            </div>
+                <input <a class="waves-effect waves-light btn" type="button" id="calculate_2" value="Calculate"></a>
+        </form>
+        <div>
+          <span id="display_value_2" class="imperial-input"></span>
+          <span id="display_message_2" class="imperial-input"></span>
+        </div>
   </body>
 
-
-
-
-
-    <script type="text/javascript">
+  <script type="text/javascript">
       $(document).ready(function () {
         $('#calculate').click(function () {
           var w = parseFloat($('#weight').val());
@@ -101,8 +85,15 @@
           $('#display_value_2').html('Your BMI is ' + person_imperial.bmi_value);
           $('#display_message_2').html(person_imperial.bmi_message);
         });
+        $('.metric').click(function() {
+          $('.metric-input').toggle();
+          $('.imperial-input').hide();
+        });
+        $('.imperial').click(function() {
+          $('.imperial-input').toggle();
+          $('.metric-input').hide();
+        });
       });
-
     </script>
   </body>
 </html>
